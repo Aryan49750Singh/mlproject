@@ -24,7 +24,7 @@ class DataTransformation:
 
     def get_data_transformer_object(self):
         '''
-        This function is responsible for data transformation
+        This function si responsible for data trnasformation
         
         '''
         try:
@@ -37,7 +37,7 @@ class DataTransformation:
                 "test_preparation_course",
             ]
 
-            num_pipeline= Pipeline(   # this function is used to create a pipeline for numerical columns.it will first impute the missing values with median and then scale the features using standard scaler.
+            num_pipeline= Pipeline(
                 steps=[
                 ("imputer",SimpleImputer(strategy="median")),
                 ("scaler",StandardScaler())
@@ -45,7 +45,7 @@ class DataTransformation:
                 ]
             )
 
-            cat_pipeline=Pipeline(   # this function is used to create a pipeline for categorical columns.it will first impute the missing values with most frequent value and then encode the features using one hot encoder and then scale the features using standard scaler.
+            cat_pipeline=Pipeline(
 
                 steps=[
                 ("imputer",SimpleImputer(strategy="most_frequent")),
@@ -55,7 +55,7 @@ class DataTransformation:
 
             )
 
-            logging.info(f"Categorical columns: {categorical_columns}") # this function is used to log the categorical columns and numerical columns in the data transformation component.
+            logging.info(f"Categorical columns: {categorical_columns}")
             logging.info(f"Numerical columns: {numerical_columns}")
 
             preprocessor=ColumnTransformer(
